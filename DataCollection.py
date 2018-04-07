@@ -2,6 +2,7 @@ from SearchStringUtility import SearchStringUtility
 from bs4 import BeautifulSoup
 import json
 import requests
+import datetime
 
 class DataCollection:
     search_term = ""
@@ -28,8 +29,9 @@ class DataCollection:
                 brand = brand_dict['brand']
                 avg_rating = attribute_list['data-average-rating']
                 num_reviews = attribute_list['data-review-count']
-
+                current_date = datetime.datetime.today().strftime('%Y-%m-%d')
                 data_obj = {
+                    "date": current_date,
                     "sku-id" : sku_id,
                     "name" : name,
                     "curr_price" : current_price,
