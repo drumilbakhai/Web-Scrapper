@@ -1,7 +1,9 @@
 from flask import Flask
 from SearchStringUtility import SearchStringUtility
+from DataCollection import DataCollection
+import json
 import datetime
-# from .SearchStringUtility import SearchStringUtility
+
 
 
 app = Flask(__name__)
@@ -17,9 +19,17 @@ def sample_data():
 @app.route('/data/<start_date>', methods=['GET'])
 def scrape_data(start_date):
     sc_obj = SearchStringUtility()
+    dc_obj = DataCollection()
     url_data = sc_obj.prepare_search_url()
+    # print(url_data)
+    final_data = {}
+
+    for each_key in url_data:
+        print(each_key)
+        final_data[each_key] = dc_obj.get_data(url_data[each_key])
 
 
-    return 'Scrapping data for %s' %data
+    # print(final_data)
+    return json.dumps(final_data)
 
 
