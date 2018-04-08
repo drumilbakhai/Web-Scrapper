@@ -5,8 +5,7 @@ class SearchStringUtility:
     def prepare_search_url(self):
         search_keyword = {
             "cstv" : "curved smart tv",
-            "stv" : "smart tv",
-            "headphones" : "bluetooth headphones"
+            "stv" : "smart tv"
         }
         web_url = {}
         for each_search_term in search_keyword:

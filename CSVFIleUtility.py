@@ -1,10 +1,25 @@
 import os
 import json
 import csv
+from SearchStringUtility import SearchStringUtility
+from DataCollection import DataCollection
+
 
 class CSVFileUtility:
     def __init__(self):
-        pass
+
+        sc_obj = SearchStringUtility()
+        dc_obj = DataCollection()
+
+        url_data = sc_obj.prepare_search_url()
+
+        final_data = {}
+
+        for each_key in url_data:
+            print(each_key)
+            final_data[each_key] = dc_obj.get_data(url_data[each_key])
+
+        self.write_csv(json.dumps(final_data), 'query.csv')
 
     def write_header(self, json_data, file_obj):
         count = 0
@@ -22,18 +37,22 @@ class CSVFileUtility:
     def write_rows(self, json_data, file_path):
 
         for each_search_key in json_data:
+            single_search_data = json_data[each_search_key]
             try:
-                single_search_data = json_data[each_search_key]
                 file_obj = open(file_path, "a")
                 output = csv.writer(file_obj)
                 for each_record in single_search_data:
-                    row = list(each_record.values())
-                    row.append(each_search_key)
-                    output.writerow(row)
+                    try:
+                        row = list(each_record.values())
+                        row.append(each_search_key)
+                        output.writerow(row)
+                    except Exception:
+                        print('ERROR IN WRITING '+each_record['sku-id'])
             except Exception:
                 print('Error in Writing')
 
-    def write_csv(self, json_data, filename):
+    def write_csv(self, data, filename):
+        json_data = json.loads(data)
         directory_path = "data/"
         file_path = directory_path+filename
 
@@ -50,5 +69,6 @@ class CSVFileUtility:
 
 
 
+# csv_obj = CSVFileUtility()
 
 
