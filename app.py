@@ -16,26 +16,10 @@ def hello_world():
 def sample_data():
     return 'Hello Data'
 
-@app.route('/data/<start_date>', methods=['GET'])
+@app.route('scrape/data/', methods=['GET'])
 def scrape_data(start_date):
-    # sc_obj = SearchStringUtility()
-    # dc_obj = DataCollection()
-    # csv_obj = CSVFileUtility()
-    #
-    # url_data = sc_obj.prepare_search_url()
-    #
-    # final_data = {}
-    #
-    # for each_key in url_data:
-    #     print(each_key)
-    #     final_data[each_key] = dc_obj.get_data(url_data[each_key])
-    #
-    # csv_obj.write_csv(json.dumps(final_data),'query.csv')
-    # sleep(0.05)
-    # # print(final_data)
 
     csv_obj = CSVFileUtility()
-
     return json.dumps('hello')
 
 if __name__ == '__main__':
