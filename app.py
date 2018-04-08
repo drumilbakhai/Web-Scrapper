@@ -16,11 +16,11 @@ def hello_world():
 def sample_data():
     return 'Hello Data'
 
-@app.route('scrape/data/', methods=['GET'])
-def scrape_data(start_date):
+@app.route('/scrape/data', methods=['GET'])
+def scrape_data():
 
     csv_obj = CSVFileUtility()
-    return json.dumps('hello')
+    return json.dumps('Scrapped the data and wrote to a CSV File')
 
 if __name__ == '__main__':
     app.run(debug = True)

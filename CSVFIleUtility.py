@@ -3,7 +3,7 @@ import json
 import csv
 from SearchStringUtility import SearchStringUtility
 from DataCollection import DataCollection
-
+from datetime import datetime
 
 class CSVFileUtility:
     def __init__(self):
@@ -19,7 +19,8 @@ class CSVFileUtility:
             print(each_key)
             final_data[each_key] = dc_obj.get_data(url_data[each_key])
 
-        self.write_csv(json.dumps(final_data), 'query.csv')
+        filename = datetime.today().strftime('%Y-%m-%d') + ".csv"
+        self.write_csv(json.dumps(final_data), filename)
 
     def write_header(self, json_data, file_obj):
         count = 0
