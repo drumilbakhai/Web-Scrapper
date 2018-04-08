@@ -4,3 +4,4 @@ Pipfile.lock
 .venv
 .idea
 *.pycgit
+*.pyc
