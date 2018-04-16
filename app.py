@@ -23,5 +23,5 @@ def scrape_data():
     return json.dumps('Scrapped the data and wrote to a CSV File')
 
 if __name__ == '__main__':
-    app.run(debug = True)
+    app.run(debug = True, host='0.0.0.0')
 

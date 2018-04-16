@@ -7,8 +7,10 @@ ADD . /flask-app
 WORKDIR /flask-app
 
 ENV SHELL=/bin/bash
+ENV FLASK_APP=app.py
 RUN pipenv --two
 RUN pipenv install --system --deploy --ignore-pipfile
 
-ENTRYPOINT ["python"]
-CMD ["app.py"]
+EXPOSE 5000
+CMD ["python", "app.py"]
+
