@@ -54,7 +54,7 @@ class CSVFileUtility:
 
     def write_csv(self, data, filename):
         json_data = json.loads(data)
-        directory_path = "data/"
+        directory_path = "raw_data/"
         file_path = directory_path+filename
 
         if os.path.exists(file_path):

@@ -1,4 +1,5 @@
-/data/*.csv
+raw_data/*.csv
+raw_data/*.txt
 Pipfile.lock
 .venv
 .idea
