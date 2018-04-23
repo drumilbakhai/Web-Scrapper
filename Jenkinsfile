@@ -4,7 +4,8 @@ pipeline{
         stage('Build'){
             steps{
                 sh 'docker build --tag flask-application-image .'
-                sh "docker run -p 5000:5000 -d --name drumilflaskapplication:${env.BUILD_ID} flask-application-image:latest"
+                sh 'docker container rm -f flaskapplicationcontainer'
+                sh "docker run -p 5000:5000 -d --name flaskapplicationcontainer flask-application-image:latest"
             }
         }
 
