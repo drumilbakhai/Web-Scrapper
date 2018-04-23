@@ -1,5 +1,4 @@
-/data
-.csv
+/data/*.csv
 Pipfile.lock
 .venv
 .idea
