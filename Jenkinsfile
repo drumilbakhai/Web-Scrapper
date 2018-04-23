@@ -11,8 +11,20 @@ pipeline{
         }
 
         stage('Testing'){
+
+            agent{
+                docker{
+                    image 'qnib/pytest'
+                }
+            }
+
             steps{
-                echo 'Testing...'
+                echo 'py.test --verbose unit_tests.py'
+            }
+            post{
+                always{
+                    echo 'Success in Testing'
+                }
             }
         }
 
