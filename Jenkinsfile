@@ -1,9 +1,10 @@
-pipeline{
-    agent any
+node{
+    def app
     stages{
         stage('Build'){
             steps{
                 sh 'docker build --tag flask-application-image .'
+                app = docker.build("flask-application-image:${env.BUILD_ID}", ".")
             }
         }
 
